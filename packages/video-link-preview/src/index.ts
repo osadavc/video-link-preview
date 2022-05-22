@@ -8,7 +8,6 @@ const videoLinkPreview = (el: string | HTMLElement) => {
     return console.log("No element or no href attribute");
   }
 
-  const rect = element?.getBoundingClientRect();
   const domElement = document.createElement("div");
 
   domElement.innerHTML = basicTemplate(element.getAttribute("href")!);
@@ -20,6 +19,8 @@ const videoLinkPreview = (el: string | HTMLElement) => {
   const video = popup.querySelector<HTMLVideoElement>(".vlp-video")!;
 
   element?.addEventListener("mouseenter", () => {
+    const rect = element?.getBoundingClientRect();
+
     video.play();
     popup.style.opacity = "1";
     popup.style.top = `${rect!.top + window.scrollY + rect!.height + 10}px`;
